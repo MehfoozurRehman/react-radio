@@ -1,21 +1,21 @@
-.checkbox {
+.radio {
   position: relative;
   width: fit-content;
   height: fit-content;
   overflow: hidden;
 }
-.checkbox__input {
+.radio__input {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
   cursor: pointer;
 }
-.checkbox__content {
+.radio__content {
   display: flex;
   align-items: center;
 }
-.checkbox__content__indicator {
+.radio__content__indicator {
   width: 25px;
   height: 25px;
   display: flex;
@@ -24,7 +24,7 @@
   margin-right: 0.5em;
   border-radius: 5px;
 }
-.checkbox__content__label {
+.radio__content__label {
   font-size: 14px;
   font-weight: bold;
 }
