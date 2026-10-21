@@ -1,59 +1,34 @@
-# react-radio-css
+# React Radio
 
-A radio button based on react thats easy to customize
+A React radio button component with a styled indicator and label, with colours set through props.
 
-## Example
+**Status:** Working demo. The `src/lib` component builds to `dist/`, and `src/App.js` is a runnable demo that uses it, but there are no tests and no published usage that I could verify from the repository.
 
-![Screenshot](./public/example.gif)
+## The problem
 
-## Usage
+Native radio buttons are hard to restyle consistently. This package wraps a radio input in a custom indicator and label, so the colours can be set through props.
 
-```js
-import React from "react";
-import Radio from "react-radio-css";
+## What it does
 
-function App() {
-  const [isSelected, setIsSelected] = React.useState(false);
-  return (
-    <Radio
-      value={isSelected}
-      label="label"
-      labelColor="#242424"
-      checkedColor="#242424"
-      unCheckedColor="#7fffd4"
-      iconColor="#ffffff"
-      onChange={() => {
-        isSelected ? setIsSelected(false) : setIsSelected(true);
-      }}
-    />
-  );
-}
+- Renders an `<input type="radio">` with a styled indicator and a label.
+- Takes `checkedColor`, `unCheckedColor`, `iconColor` and `labelColor` props for the colours.
+- Shows a check mark when `value` is truthy, and passes `onChange` and other props to the input.
+- Includes a demo app in `src/App.js` that toggles one radio between selected and unselected.
+
+## How it's built
+
+A React function component in `src/lib/index.js`, with its stylesheet in `src/lib/styles.css`. Babel compiles `src/lib` into `dist/` with `npm run build`. The demo runs on Create React App's `react-scripts`, which is separate from the package build.
+
+## Running it locally
+
+```bash
+npm install
+npm start      # runs the demo app on http://localhost:3000
+npm run build  # compiles src/lib into dist/
 ```
 
-## Props
+## What's left
 
-Common props you may want to specify include:
-
-- `value` - value of radio
-- `label` - set label of radio
-- `labelColor` - set color of label of radio
-- `checkedColor` - set background color of radio when checked
-- `unCheckedColor` - set background color of radio when unchecked
-- `iconColor` - set color of check icon
-- `onChange` - onchange function of radio
-- `style` - can do custom styling
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-This has a starter project using this package you can test it there
-
-### `npm run build`
-
-Builds the package for production to the `dist` folder.\
+- `value` is used as the selected flag and also passed to the input's `value` attribute. A radio group would normally use a shared `name` and a value per option.
+- The input uses `class` rather than `className`, which React warns about.
+- There are no tests. A `test` script exists, but no test files were found.
